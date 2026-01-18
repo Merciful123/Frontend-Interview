@@ -70,6 +70,27 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* scrollbar css */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; /* gray-400 */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f3f4f6; /* gray-100 */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #f3f4f6;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

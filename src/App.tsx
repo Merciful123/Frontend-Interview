@@ -1,6 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./App.css";
-import { Button } from "./components/ui/button";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./pages/Layout";
+import BlogPage from "./pages/BlogPage"
+
 
 function App() {
   const queryClient = new QueryClient({
@@ -15,8 +18,14 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <p>Hellow world</p>
-      <Button>Click me</Button>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<BlogPage />} />
+            <Route path="blog/:id" element={<BlogPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 }
