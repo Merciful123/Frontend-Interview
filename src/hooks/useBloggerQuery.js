@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {blogApi}  from "../services/blogApi";
 
 export const useBlogList = () => {
@@ -14,5 +14,17 @@ export const useBlogDetail = (blogId) => {
     queryKey: ['blog', blogId],
     queryFn: () => blogApi.getBlogById(blogId),
     enabled: !!blogId
+  });
+};
+
+
+export const useCreateBlog = () => {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: blogApi.createBlog,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['blogs'] });
+    }
   });
 };

@@ -7,6 +7,7 @@ import {
 import BlogList from '../components/blog/BlogList';
 import { useBlogList } from '../hooks/useBloggerQuery';
 import { useEffect } from 'react';
+import CreateBlogForm from '../components/blog/CreateBlogForm';
 
 
 const BlogPage = () => {
@@ -32,6 +33,7 @@ const BlogPage = () => {
           {/* Left Panel - Blog List */}
           <div className="lg:col-span-1 space-y-4">
             {/* add create form here */}
+            <CreateBlogForm/>
             <div className="max-h-[calc(100vh-100px)] overflow-y-auto pr-2 mt-1 scrollbar-thin custom-scroll">
               <BlogList selectedBlogId={id} />
             </div>
